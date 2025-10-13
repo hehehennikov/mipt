@@ -5,19 +5,29 @@ Python 3.7+
 
 ## Запуск
 1) TCP сервер (последовательная обработка клиентов, эхо + двунаправленный ввод/вывод)
+```Bash
 python ping-pong.py tcp-server --host 0.0.0.0 --port 50000
+``
 
 2) TCP клиент интерактивный (подключается и связывает stdin/stdout с сокетом)
+```Bash
 python ping-pong.py tcp-client --host 127.0.0.1 --port 50000 --interactive
+```
 
 3) TCP клиент одноразовая отправка сообщения и получение эхо
+```Bash
 python ping-pong.py tcp-client --host 127.0.0.1 --port 50000 --message "hello"
+```
 
 4) UDP сервер (принимает и отвечает эхо на полученные датаграммы)
+```Bash
 python ping-pong.py udp-server --host 0.0.0.0 --port 50000
+```
 
 5) UDP клиент (отправляет сообщение и ждет один ответ)
+```Bash
 python ping-pong.py udp-client --host 127.0.0.1 --port 50000 --message "hi"
+```
 
 Если сообщение для udp-client не указанo, программа прочитает stdin:
 echo "hi" | python ping-pong.py udp-client --host 127.0.0.1 --port 50000
@@ -25,8 +35,10 @@ echo "hi" | python ping-pong.py udp-client --host 127.0.0.1 --port 50000
 # Совместимость с netcat
 Можно использовать netcat для отладки.
 Примеры:
+```Bash
 nc 127.0.0.1 50000       # TCP клиент к tcp-server
 nc -u 127.0.0.1 50000    # UDP клиент к udp-server
+```
 
 Тест на большую строку (~50 КБ)
 python ping-pong.py test-huge --host 127.0.0.1 --port 50000 --size 50000
