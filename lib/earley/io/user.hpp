@@ -6,7 +6,7 @@
 
 namespace earley::io {
 
-inline auto read_problem(std::istream& in) {
+inline auto ReadProblem(std::istream& in) {
   auto read_header = [&] {
     int N;
     int Sigma;
@@ -189,7 +189,7 @@ inline auto read_problem(std::istream& in) {
   return std::pair{std::move(G), std::move(words)};
 }
 
-inline void process_and_write(Grammar const& G,
+inline void ProcessAndWrite(Grammar const& G,
                               std::vector<std::string> const& words,
                               std::ostream& out) {
   EarleyParser parser;

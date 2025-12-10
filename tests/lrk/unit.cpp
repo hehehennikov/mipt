@@ -3,11 +3,11 @@
 #include <sstream>
 #include <string>
 
-#include <earley/algo/user.hpp>
+#include <lrk/algo/user.hpp>
 
-#include <earley/io/user.hpp>
+#include <lrk/io/user.hpp>
 
-TEST(EarleyIOTests, ExampleFromStatement) {
+TEST(lrkIOTests, ExampleFromStatement) {
     const std::string input =
         "1 2 2\n"
         "S\n"
@@ -23,13 +23,13 @@ TEST(EarleyIOTests, ExampleFromStatement) {
     std::istringstream in(input);
     std::ostringstream out;
 
-    auto [G, words] = earley::io::ReadProblem(in);
-    earley::io::ProcessAndWrite(G, words, out);
+    auto [G, words] = lrk::io::ReadProblem(in);
+    lrk::io::ProcessAndWrite(G, words, out);
 
     EXPECT_EQ(out.str(), expected);
 }
 
-TEST(EarleyIOTests, EpsilonAndNonAlphabet) {
+TEST(lrkIOTests, EpsilonAndNonAlphabet) {
     const std::string input =
         "1 0 1\n"
         "S\n"
@@ -44,13 +44,13 @@ TEST(EarleyIOTests, EpsilonAndNonAlphabet) {
     std::istringstream in(input);
     std::ostringstream out;
 
-    auto [G, words] = earley::io::ReadProblem(in);
-    earley::io::ProcessAndWrite(G, words, out);
+    auto [G, words] = lrk::io::ReadProblem(in);
+    lrk::io::ProcessAndWrite(G, words, out);
 
     EXPECT_EQ(out.str(), expected);
 }
 
-TEST(EarleyIOTests, SimpleConcatenation) {
+TEST(lrkIOTests, SimpleConcatenation) {
     const std::string input =
         "1 2 1\n"
         "S\n"
@@ -65,13 +65,13 @@ TEST(EarleyIOTests, SimpleConcatenation) {
     std::istringstream in(input);
     std::ostringstream out;
 
-    auto [G, words] = earley::io::ReadProblem(in);
-    earley::io::ProcessAndWrite(G, words, out);
+    auto [G, words] = lrk::io::ReadProblem(in);
+    lrk::io::ProcessAndWrite(G, words, out);
 
     EXPECT_EQ(out.str(), expected);
 }
 
-TEST(EarleyIOTests, LeftRecursiveGrammarManyAs) {
+TEST(lrkIOTests, LeftRecursiveGrammarManyAs) {
     const std::string input =
         "1 1 2\n"
         "S\n"
@@ -88,13 +88,13 @@ TEST(EarleyIOTests, LeftRecursiveGrammarManyAs) {
     std::istringstream in(input);
     std::ostringstream out;
 
-    auto [G, words] = earley::io::ReadProblem(in);
-    earley::io::ProcessAndWrite(G, words, out);
+    auto [G, words] = lrk::io::ReadProblem(in);
+    lrk::io::ProcessAndWrite(G, words, out);
 
     EXPECT_EQ(out.str(), expected);
 }
 
-TEST(EarleyIOTests, WordWithUnknownTerminal) {
+TEST(lrkIOTests, WordWithUnknownTerminal) {
     const std::string input =
         "1 1 1\n"
         "S\n"
@@ -108,8 +108,8 @@ TEST(EarleyIOTests, WordWithUnknownTerminal) {
     std::istringstream in(input);
     std::ostringstream out;
 
-    auto [G, words] = earley::io::ReadProblem(in);
-    earley::io::ProcessAndWrite(G, words, out);
+    auto [G, words] = lrk::io::ReadProblem(in);
+    lrk::io::ProcessAndWrite(G, words, out);
 
     EXPECT_EQ(out.str(), expected);
 }
